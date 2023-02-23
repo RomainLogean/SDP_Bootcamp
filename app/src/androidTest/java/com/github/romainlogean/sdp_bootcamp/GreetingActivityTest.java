@@ -4,6 +4,7 @@ import static androidx.test.espresso.Espresso.onView;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.util.Log;
 
@@ -25,9 +26,11 @@ public class GreetingActivityTest {
         intent.putExtra("NAME", "Ema");
 
         try {
-            ActivityScenario.launch(intent);
+            ActivityScenario<Activity> activity = ActivityScenario.launch(intent);
 
             onView(ViewMatchers.withId(R.id.greeting_text)).check(matches(withText(greetingText)));
+
+            activity.close();
         }
         catch (Exception e) {
             Log.e("GreetingActivityTest", "Error launching activity: ${e.message}");
