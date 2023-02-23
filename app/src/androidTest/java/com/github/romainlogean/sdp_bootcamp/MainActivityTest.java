@@ -12,6 +12,8 @@ import static androidx.test.espresso.intent.matcher.IntentMatchers.toPackage;
 
 import static org.hamcrest.core.AllOf.allOf;
 
+import android.provider.ContactsContract;
+
 import androidx.test.espresso.intent.Intents;
 import androidx.test.espresso.matcher.ViewMatchers;
 import androidx.test.ext.junit.rules.ActivityScenarioRule;
@@ -39,8 +41,7 @@ public class MainActivityTest {
 
         onView(ViewMatchers.withId(R.id.mainGoButton)).perform(click());
 
-        intended(allOf(hasComponent(GreetingActivity.class.getName())));
-        intended(allOf(hasExtra("NAME","Romain")));
+        intended(allOf(hasExtra("NAME","Romain"),hasComponent(GreetingActivity.class.getName())));
 
         Intents.release();
     }
