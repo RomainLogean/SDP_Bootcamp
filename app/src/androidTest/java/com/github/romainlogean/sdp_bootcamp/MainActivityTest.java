@@ -8,11 +8,8 @@ import static androidx.test.espresso.action.ViewActions.typeText;
 import static androidx.test.espresso.intent.Intents.intended;
 import static androidx.test.espresso.intent.matcher.IntentMatchers.hasComponent;
 import static androidx.test.espresso.intent.matcher.IntentMatchers.hasExtra;
-import static androidx.test.espresso.intent.matcher.IntentMatchers.toPackage;
 
 import static org.hamcrest.core.AllOf.allOf;
-
-import android.provider.ContactsContract;
 
 import androidx.test.espresso.intent.Intents;
 import androidx.test.espresso.matcher.ViewMatchers;
@@ -29,12 +26,11 @@ public class MainActivityTest {
     public ActivityScenarioRule<MainActivity> testRule = new ActivityScenarioRule<>(MainActivity.class);
 
     @Test
-    public void GoodWayTest(){
+    public void ChangeActivityWithExtraTest(){
 
         Intents.init();
 
         onView(ViewMatchers.withId(R.id.mainName))
-                .perform(click())
                 .perform(clearText())
                 .perform(typeText("Romain"))
                 .perform(closeSoftKeyboard());

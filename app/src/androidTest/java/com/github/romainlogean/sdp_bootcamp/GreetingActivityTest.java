@@ -20,10 +20,10 @@ import org.junit.runner.RunWith;
 public class GreetingActivityTest {
 
     @Test
-    public void GoodWayTest(){
-        String greetingText = "Welcome in my app Ema !";
+    public void TextTakesExtraValueTest(){
+        String greetingText = "Welcome in my app Yann !";
         Intent intent = new Intent(ApplicationProvider.getApplicationContext(), GreetingActivity.class);
-        intent.putExtra("NAME", "Ema");
+        intent.putExtra("NAME", "Yann");
 
         try {
             ActivityScenario<Activity> activity = ActivityScenario.launch(intent);
