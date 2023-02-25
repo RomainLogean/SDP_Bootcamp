@@ -12,21 +12,18 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
         Button button = findViewById(R.id.mainGoButton);
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(view.getContext(), GreetingActivity.class);
-                TextView nameTV = findViewById(R.id.mainName);
-                String name = nameTV.getText().toString();
-                intent.putExtra("NAME", name);
-                view.getContext().startActivity(intent);
-            }
-        });
+        button.setOnClickListener(this::greet);
+    }
+
+    public void greet(View view){
+        Intent intent = new Intent(view.getContext(), GreetingActivity.class);
+        TextView nameTV = findViewById(R.id.mainName);
+        String name = nameTV.getText().toString();
+        intent.putExtra("NAME", name);
+        view.getContext().startActivity(intent);
     }
 }
